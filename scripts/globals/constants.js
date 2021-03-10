@@ -42,6 +42,7 @@ export const TYPES = {
    INPUT_BOOLEAN: 'input_boolean',
    LIGHT: 'light',
    TEXT_LIST: 'text_list',
+   SENSOR_LIST: 'sensor_list',
    INPUT_NUMBER: 'input_number',
    INPUT_SELECT: 'input_select',
    INPUT_DATETIME: 'input_datetime',
