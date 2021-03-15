@@ -227,8 +227,8 @@
                <span ng-bind="listField('title', item, line)"></span>
             </div>
             <div class="item-list--value">
-               <span ng-bind="listField('value', item, line)"></span><!--
-            --><span ng-bind="listField('unit', item, line)"></span>
+               <span ng-bind="listField('value', item, line)"></span>
+               <span ng-bind="listField('unit', item, line)"></span>
             </div>
          </div>
       </div>
@@ -241,12 +241,11 @@
                ng-repeat="line in item.list track by $index">
             <div ng-if="(entity=getItemEntity(line))">
                <div class="item-list--name">
-                  <i class="mdi" ng-class="line.icons[entity.state]||''" ng-if="line.icons"></i>
+                  <i class="mdi" ng-class="entityIcon(line, entity)" ng-if="line.icons || line.icon"></i>
                   <span ng-bind="line.title"></span>
                </div>
                <div class="item-list--value">
-                  <span ng-bind="line.states[entity.state]||entity.state"></span>
-                  <span ng-bind="entity.attributes.unit_of_measurement||''"></span>
+                  <span ng-bind="entityState(line, entity)"></span>
                </div>
             </div>
          </div>
