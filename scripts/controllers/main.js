@@ -621,14 +621,17 @@ App.controller('Main', function ($scope, $timeout, $location, Api, tmhDynamicLoc
       return value;
    };
 
-   $scope.getWeatherField = function (field, item, entity) {
+   $scope.getWeatherField = function (field, item, entity, precision) {
       const fields = item.fields;
 
       if (!fields || !fields[field]) {
          return null;
       }
-
-      return parseFieldValue(fields[field], item, entity);
+      let result = parseFieldValue(fields[field], item, entity);
+      if (precision !== undefined) {
+         result = $scope.filterNumber(result, precision);
+      }
+      return result;
    };
 
    $scope.getWeatherLine = function (line, item, entity) {
