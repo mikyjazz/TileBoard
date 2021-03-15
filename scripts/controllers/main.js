@@ -1274,7 +1274,7 @@ App.controller('Main', function ($scope, $timeout, $location, Api, tmhDynamicLoc
       return value;
    };
 
-   $scope.reverseLookupClimateOption = function (item, entity, option) {
+   $scope.nativeOptionFromClimateOption = function (item, entity, option) {
       initializeClimateOptions(item, entity);
       for (const [key, value] of Object.entries(item.climateOptions)) {
          if (value === option) {
@@ -1284,7 +1284,7 @@ App.controller('Main', function ($scope, $timeout, $location, Api, tmhDynamicLoc
       return option;
    };
 
-   $scope.lookupClimateOption = function (item, entity, option) {
+   $scope.stateToClimateOption = function (item, entity, option) {
       initializeClimateOptions(item, entity);
       return item.climateOptions[option] || option;
    };
@@ -1311,7 +1311,7 @@ App.controller('Main', function ($scope, $timeout, $location, Api, tmhDynamicLoc
 
    $scope.getClimateCurrentOption = function (item, entity) {
       const option = item.useHvacMode ? entity.state : entity.attributes.preset_mode;
-      return $scope.lookupClimateOption(item, entity, option);
+      return $scope.stateToClimateOption(item, entity, option);
    };
 
    $scope.setClimateOption = function ($event, item, entity, option) {
@@ -1320,7 +1320,7 @@ App.controller('Main', function ($scope, $timeout, $location, Api, tmhDynamicLoc
 
       let service;
       const serviceData = {};
-      const _option = $scope.reverseLookupClimateOption(item, entity, option);
+      const _option = $scope.nativeOptionFromClimateOption(item, entity, option);
 
       if (item.useHvacMode) {
          service = 'set_hvac_mode';
