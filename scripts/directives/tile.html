@@ -366,7 +366,7 @@
          <div class="weather-line -items">
             <span ng-if="item.fields.lowTemperature" class="weather-item">
                <i class="mdi mdi-arrow-collapse-down"></i>
-               <span ng-bind="(getWeatherField('lowTemperature', item, entity, item.fields.temperaturePrecision || 1"></span>
+               <span ng-bind="getWeatherField('lowTemperature', item, entity, item.fields.temperaturePrecision || 1")></span>
                <span ng-bind="getWeatherField('lowTemperatureUnit', item, entity)"></span>
             </span>
          </div>
