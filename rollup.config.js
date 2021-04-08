@@ -27,10 +27,6 @@ if (isProduction) {
    outputJsName = 'app.js';
    outputCssName = 'styles[extname]';
    appPlugins.push(
-      copy([
-         // Copy over empty custom.css but don't overwrite in case user has customized it.
-         { files: './styles/custom.css', dest: `./${outDir}/styles/`, options: { overwrite: false } },
-      ]),
       serve({
          contentBase: outDir,
          port: 8080,
@@ -100,6 +96,7 @@ const config = {
          { files: './manifest.webmanifest', dest: `./${outDir}/` },
          { files: './images/*.*', dest: `./${outDir}/images/` },
          { files: `./node_modules/angular-i18n/angular-locale_(${BUNDLED_LOCALES.join('|')}).js`, dest: `./${outDir}/locales/` },
+         { files: `./node_modules/moment/locale/(${BUNDLED_LOCALES.join('|')}).js`, dest: `./${outDir}/locales/` },
       ]),
       ...appPlugins,
    ],
